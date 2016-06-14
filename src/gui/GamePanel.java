@@ -47,7 +47,8 @@ public class GamePanel extends JPanel {
 		springLayout.putConstraint(SpringLayout.WEST, bfPanel, 0, SpringLayout.WEST, handPanel);
 		springLayout.putConstraint(SpringLayout.SOUTH, bfPanel, 0, SpringLayout.NORTH, handPanel);
 		springLayout.putConstraint(SpringLayout.EAST, bfPanel, -300, SpringLayout.EAST, handPanel);
-
+		
+		textPane.setEditable(false);
 		textPane.setText(
 				"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
 	
