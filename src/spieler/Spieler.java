@@ -1,5 +1,6 @@
 package spieler;
 
+import Karten.SWT2.src.Flaute;
 import Karten.SWT2.src.Karte;
 
 public class Spieler {
@@ -18,11 +19,14 @@ public class Spieler {
 	
 	public void spieleKarteAus(Karte karte){};
 	public void spieleKarteAus(Karte karte, Spieler spieler){};
-	public Karte macheBeute(Spieler spieler){ return new Karte();};
+	public Karte macheBeute(Spieler spieler){ return new Flaute();};
 	public void kaufeKanonen(){};
 	public void kaufeKarten(){};
 	public void kaufeSchiff(){};
 	public void macheVersprechungen(Spieler spieler, Karte karte){};
 	public void zieheKarten(){};
+	public int[] getKanonen(){
+		return kanonen;
+		};
 	
 	}
