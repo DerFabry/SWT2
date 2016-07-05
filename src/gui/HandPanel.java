@@ -61,13 +61,13 @@ public class HandPanel extends JPanel {
 		add(cardPanel3);
 		add(cardPanel4);
 		add(cardPanel5);
-		
-	canonButton.addActionListener(new CanonButtonListener());
-//		buyShipButton.addActionListener(new BuyShipButtonListener());
-//		buyCanonButton.addActionListener(new BuyCanonButtonListener());
-//		makePromisesButton.addActionListener(new MakePromisesButtonListener());
-//		buyCardButton.addActionListener(new BuyCardButtonListener());
-//		playCardButton.addActionListener(new PlayCardButtonListener());
+
+		canonButton.addActionListener(new CanonButtonListener());
+		buyShipButton.addActionListener(new BuyShipButtonListener());
+		buyCanonButton.addActionListener(new BuyCanonButtonListener());
+		makePromisesButton.addActionListener(new MakePromisesButtonListener());
+		buyCardButton.addActionListener(new BuyCardButtonListener());
+		playCardButton.addActionListener(new PlayCardButtonListener());
 
 		springLayout.putConstraint(SpringLayout.NORTH, canonButton, 0, SpringLayout.NORTH, makePromisesButton);
 		springLayout.putConstraint(SpringLayout.EAST, canonButton, -20, SpringLayout.WEST, makePromisesButton);
