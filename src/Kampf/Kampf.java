@@ -38,12 +38,31 @@ public class Kampf {
 	
 	public Spieler ermittleSieger()
 	{
+		
 		return new Spieler();
 	}
 	
+	public int getAngriffswert()
+	{
+		return 0;
+	}
+	
 	public int getVerteidigungswert()
-	{return 0;
-			}
+	{
+		int verteidigungswert = 0;
+		int anzahl = 0;
+		int[] kanonen = verteidiger.getKanonen();
+		for(int i = 0; 0 != kanonen[i]; i++)
+			anzahl++;
+		
+		for(int i = 0; i < anzahl; i++)
+			if(kanonen[i] == 6)
+				verteidigungswert++;
+				
+		
+		return verteidigungswert;
+	}
+	
 	
 
 }
