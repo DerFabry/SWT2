@@ -1,5 +1,7 @@
 package spieler;
 
+import Karten.SWT2.src.Karte;
+
 public class Spieler {
 
 	private int id;
@@ -10,5 +12,17 @@ public class Spieler {
 	private int anzahlSchiffe;
 	private Karte handkarten[];
 	
+	private void richteKanone(Spieler ziel){
 	
-}
+	};
+	
+	public void spieleKarteAus(Karte karte){};
+	public void spieleKarteAus(Karte karte, Spieler spieler){};
+	public Karte macheBeute(Spieler spieler){ return new Karte();};
+	public void kaufeKanonen(){};
+	public void kaufeKarten(){};
+	public void kaufeSchiff(){};
+	public void macheVersprechungen(Spieler spieler, Karte karte){};
+	public void zieheKarten(){};
+	
+	}
