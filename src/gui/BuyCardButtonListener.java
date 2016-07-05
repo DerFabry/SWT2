@@ -19,6 +19,8 @@ public class BuyCardButtonListener implements ActionListener {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		GuiAdapterklasse aC = GuiAdapterklasse.getInstance();
+		aC.handleBuyCardButtonListener();
 	}
 
 }

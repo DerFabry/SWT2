@@ -19,6 +19,8 @@ public class BuyCanonButtonListener implements ActionListener {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		GuiAdapterklasse aC = GuiAdapterklasse.getInstance();
+		aC.handleBuyCanonButtonListener();
 	}
 
 }

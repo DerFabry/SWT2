@@ -33,11 +33,11 @@ public class GamePanel extends JPanel {
 		this.add(bfPanel);
 
 		add(textPane);
-		textPane.setBackground(Color.PINK);
+		textPane.setBackground(Color.lightGray);
 
 		springLayout.putConstraint(SpringLayout.NORTH, textPane, 10, SpringLayout.NORTH, this);
-		springLayout.putConstraint(SpringLayout.WEST, textPane, -198, SpringLayout.EAST, this);
-		springLayout.putConstraint(SpringLayout.SOUTH, textPane, 386, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, textPane, 10, SpringLayout.EAST, bfPanel);
+		springLayout.putConstraint(SpringLayout.SOUTH, textPane, -10, SpringLayout.NORTH, handPanel);
 		springLayout.putConstraint(SpringLayout.EAST, textPane, -10, SpringLayout.EAST, this);
 		
 		springLayout.putConstraint(SpringLayout.NORTH, handPanel, -200, SpringLayout.SOUTH, this);
@@ -48,7 +48,7 @@ public class GamePanel extends JPanel {
 		springLayout.putConstraint(SpringLayout.NORTH, bfPanel, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, bfPanel, 0, SpringLayout.WEST, handPanel);
 		springLayout.putConstraint(SpringLayout.SOUTH, bfPanel, 0, SpringLayout.NORTH, handPanel);
-		springLayout.putConstraint(SpringLayout.EAST, bfPanel, -300, SpringLayout.EAST, handPanel);
+		springLayout.putConstraint(SpringLayout.EAST, bfPanel, -300, SpringLayout.EAST, this);
 		
 		textPane.setEditable(false);
 			
