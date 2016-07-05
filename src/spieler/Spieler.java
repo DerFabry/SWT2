@@ -1,5 +1,6 @@
 package spieler;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import Karten.SWT2.src.Flaute;
@@ -13,7 +14,7 @@ public class Spieler {
 	private int dublonen;
 	private int siegpunkte;
 	private int anzahlSchiffe;
-	private Vector<Karte> handkarten;
+	private ArrayList<Integer> handkarten; // integer repräsentieren die ids der HandKarten
 	
 	
 	public Spieler (int id, String name){
@@ -23,7 +24,7 @@ public class Spieler {
 		dublonen= 0;
 		siegpunkte = 0;
 		anzahlSchiffe =0;
-		handkarten = new Vector<Karte>();
+		setHandkarten(new ArrayList<Integer>());
 		
 	};
 	
@@ -42,7 +43,9 @@ public class Spieler {
 	};
 	
 	public int getId(){return id;};
-	public void spieleKarteAus(Karte karte){};
+	public void spieleKarteAus(int karte){ 
+		getHandkarten().remove(karte);
+	};
 	public void spieleKarteAus(Karte karte, Spieler spieler){};
 	public Karte macheBeute(Spieler spieler){ return new Flaute();};
 	public void kaufeKanonen(){};
@@ -52,6 +55,14 @@ public class Spieler {
 	public void zieheKarten(){};
 	public int[] getKanonen(){
 		return kanonen;
-		};
+		}
+
+	private ArrayList<Integer> getHandkarten() {
+		return handkarten;
+	}
+
+	private void setHandkarten(ArrayList<Integer> handkarten) {
+		this.handkarten = handkarten;
+	};
 	
 	}
