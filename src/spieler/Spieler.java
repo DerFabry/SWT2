@@ -7,6 +7,8 @@ public class Spieler {
 	private int kanonen[];
 	private int dublonen;
 	private int siegpunkte;
+	private int anzahlSchiffe;
+	private Karte handkarten[];
 	
 	
 }
