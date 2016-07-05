@@ -3,7 +3,7 @@ package Karten.SWT2.src;
 
 public class KampfCreator extends Spielablauf{
 
-	public void SpieleKarteAus(int id) throws ArrayIndexOutOfBoundsException, Exception 
+	public Karte SpieleKarteAus(int id) throws ArrayIndexOutOfBoundsException, Exception 
 	{
 		
 		if (id < 7 || id > 13)
@@ -33,6 +33,8 @@ public class KampfCreator extends Spielablauf{
 			
 		else if(id == 13)		
 			new SchlechterWind().kartenAktion();
+		
+		return null;
 	
 	}
 

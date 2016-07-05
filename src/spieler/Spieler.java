@@ -24,7 +24,7 @@ public class Spieler {
 		dublonen= 0;
 		siegpunkte = 0;
 		anzahlSchiffe =0;
-		setHandkarten(new ArrayList<Integer>());
+		handkarten = new ArrayList<Integer>();
 		
 	};
 	
@@ -61,8 +61,9 @@ public class Spieler {
 		return handkarten;
 	}
 
-	public void setHandkarten(ArrayList<Integer> handkarten) {
-		this.handkarten = handkarten;
+	public void setHandkarten(int kartenId) {
+	
+		this.handkarten.add(kartenId);
 	};
 	
 	}

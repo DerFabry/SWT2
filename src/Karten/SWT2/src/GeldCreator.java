@@ -4,7 +4,7 @@ package Karten.SWT2.src;
 public class GeldCreator extends Spielablauf
 {
 
-	public void SpieleKarteAus(int id) throws ArrayIndexOutOfBoundsException, Exception 
+	public Karte SpieleKarteAus(int id) throws ArrayIndexOutOfBoundsException, Exception 
 	{
 		
 		if(id != 3)
@@ -17,6 +17,8 @@ public class GeldCreator extends Spielablauf
 		
 		if(id == 3)
 			new Beute().kartenAktion();
+		
+		return null;
 		
 		
 	}
