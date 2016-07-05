@@ -57,11 +57,11 @@ public class Spieler {
 		return kanonen;
 		}
 
-	private ArrayList<Integer> getHandkarten() {
+	public ArrayList<Integer> getHandkarten() {
 		return handkarten;
 	}
 
-	private void setHandkarten(ArrayList<Integer> handkarten) {
+	public void setHandkarten(ArrayList<Integer> handkarten) {
 		this.handkarten = handkarten;
 	};
 	

@@ -75,7 +75,4 @@ public class Kampf {
 		
 		return verteidigungswert;
 	}
-	
-	
-
 }
