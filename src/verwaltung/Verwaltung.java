@@ -9,7 +9,7 @@ import Karten.SWT2.src.LuxusCreator;
 import Karten.SWT2.src.SonstigesCreator;
 
 public class Verwaltung {
-	private static final Verwaltung VERWALTUNG = new Verwaltung(5);
+	private static final Verwaltung VERWALTUNG = new Verwaltung(3);
 	private Spieler piratenkönig;
 	private int anzahlSpieler;
 	private int aktuelleSpielphase;
@@ -72,7 +72,7 @@ public class Verwaltung {
 				
 			}
 			
-			this.setPiratenkönig(spieler[rand.nextInt(anzahlSpieler)+1]);
+			this.setPiratenkönig(spieler[rand.nextInt(anzahlSpieler)]);
 			
 			for(int i = 0; i < anzahlSpieler; i++)
 				piratenkönig.setHandkarten(zieheKarte());
@@ -137,8 +137,12 @@ public class Verwaltung {
 	}
 	
 	
-	public Spieler[] getSpieler()
+	public ArrayList<Spieler> getSpieler()
 	{
-		return spieler;
+		ArrayList<Spieler> spielerListe = new ArrayList<Spieler>();
+		for (Spieler spieler : spieler) {
+			spielerListe.add(spieler);
+		}
+		return spielerListe;
 	}
 }

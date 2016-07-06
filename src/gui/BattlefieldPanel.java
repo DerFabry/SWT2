@@ -79,15 +79,18 @@ public class BattlefieldPanel extends JPanel {
 		sl_this.putConstraint(SpringLayout.WEST, opponentInfo4, 0, SpringLayout.WEST, this);
 	}
 
-	private void updateOpponents(Spieler[] spielerArray) {
+	private void updateOpponents(ArrayList<Spieler> spielerList) {
 		Iterator<PlayerInfoPanel> Paneliter = playerInfoPanelList.iterator();
-		int spielerCount = 0;
+		Iterator<Spieler> spielerIterator = spielerList.iterator();
 		while (Paneliter.hasNext()) {
 			PlayerInfoPanel pip = Paneliter.next();
-			if (spielerCount < spielerArray.length) {
-				pip.setPlayerinfo(spielerArray[spielerCount]);
+			if(spielerIterator.hasNext()){
+				Spieler sp = spielerIterator.next();
+				pip.setPlayerinfo(sp);
+			} else{
+				pip.setVisible(false);
 			}
-			spielerCount++;
+
 
 		}
 	}

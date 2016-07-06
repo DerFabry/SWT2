@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.ArrayList;
+
 import spieler.Spieler;
 import verwaltung.Verwaltung;
 
@@ -38,10 +40,10 @@ public class GuiAdapterklasse {
 		System.out.println("handleBuyCardButtonListener");
 	}
 	
-	public Spieler[] getSpieler(){
+	public ArrayList<Spieler> getSpieler(){
 		Verwaltung verwaltung = Verwaltung.getInstance();
-		Spieler[] spielerArray = verwaltung.getSpieler();
-		return spielerArray;
+		ArrayList<Spieler> spielerList = verwaltung.getSpieler();
+		return spielerList;
 		
 	}
 }

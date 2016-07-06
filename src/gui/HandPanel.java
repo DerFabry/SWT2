@@ -9,10 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
+import spieler.Spieler;
+
 public class HandPanel extends JPanel {
 
 	JButton canonButton, buyShipButton, buyCanonButton, makePromisesButton, buyCardButton, playCardButton;
-	CardPanel cardPanel1, cardPanel2, cardPanel3, cardPanel4, cardPanel5;
+	CardPanel cardPanel1, cardPanel2, cardPanel3, cardPanel4, cardPanel5, cardPanel6, cardPanel7, cardPanel8, cardPanel9, cardPanel10;
 	List<CardPanel> hand = new ArrayList<CardPanel>();
 	SpringLayout springLayout;
 	int cardWidth;
@@ -32,6 +34,11 @@ public class HandPanel extends JPanel {
 		cardPanel3 = new CardPanel();
 		cardPanel4 = new CardPanel();
 		cardPanel5 = new CardPanel();
+		cardPanel6 = new CardPanel();
+		cardPanel7 = new CardPanel();
+		cardPanel8 = new CardPanel();
+		cardPanel9= new CardPanel();
+		cardPanel10 = new CardPanel();
 
 		cardWidth = 130;
 
@@ -40,6 +47,11 @@ public class HandPanel extends JPanel {
 		hand.add(cardPanel3);
 		hand.add(cardPanel4);
 		hand.add(cardPanel5);
+		hand.add(cardPanel6);
+		hand.add(cardPanel7);
+		hand.add(cardPanel8);
+		hand.add(cardPanel9);
+		hand.add(cardPanel10);
 
 		setupPanel();
 	}
@@ -117,23 +129,63 @@ public class HandPanel extends JPanel {
 		springLayout.putConstraint(SpringLayout.SOUTH, cardPanel5, 0, SpringLayout.SOUTH, cardPanel4);
 		springLayout.putConstraint(SpringLayout.WEST, cardPanel5, 10, SpringLayout.EAST, cardPanel4);
 		springLayout.putConstraint(SpringLayout.EAST, cardPanel5, cardWidth, SpringLayout.WEST, cardPanel5);
-
+		
+		springLayout.putConstraint(SpringLayout.NORTH, cardPanel6, 0, SpringLayout.NORTH, cardPanel5);
+		springLayout.putConstraint(SpringLayout.SOUTH, cardPanel6, 0, SpringLayout.SOUTH, cardPanel5);
+		springLayout.putConstraint(SpringLayout.WEST, cardPanel6, 10, SpringLayout.EAST, cardPanel5);
+		springLayout.putConstraint(SpringLayout.EAST, cardPanel6, cardWidth, SpringLayout.WEST, cardPanel6);
+		
+		springLayout.putConstraint(SpringLayout.NORTH, cardPanel7, 0, SpringLayout.NORTH, cardPanel6);
+		springLayout.putConstraint(SpringLayout.SOUTH, cardPanel7, 0, SpringLayout.SOUTH, cardPanel6);
+		springLayout.putConstraint(SpringLayout.WEST, cardPanel7, 10, SpringLayout.EAST, cardPanel6);
+		springLayout.putConstraint(SpringLayout.EAST, cardPanel7, cardWidth, SpringLayout.WEST, cardPanel7);
+		
+		springLayout.putConstraint(SpringLayout.NORTH, cardPanel8, 0, SpringLayout.NORTH, cardPanel7);
+		springLayout.putConstraint(SpringLayout.SOUTH, cardPanel8, 0, SpringLayout.SOUTH, cardPanel7);
+		springLayout.putConstraint(SpringLayout.WEST, cardPanel8, 10, SpringLayout.EAST, cardPanel7);
+		springLayout.putConstraint(SpringLayout.EAST, cardPanel8, cardWidth, SpringLayout.WEST, cardPanel8);
+		
+		springLayout.putConstraint(SpringLayout.NORTH, cardPanel9, 0, SpringLayout.NORTH, cardPanel8);
+		springLayout.putConstraint(SpringLayout.SOUTH, cardPanel9, 0, SpringLayout.SOUTH, cardPanel8);
+		springLayout.putConstraint(SpringLayout.WEST, cardPanel9, 10, SpringLayout.EAST, cardPanel8);
+		springLayout.putConstraint(SpringLayout.EAST, cardPanel9, cardWidth, SpringLayout.WEST, cardPanel9);
+		
+		springLayout.putConstraint(SpringLayout.NORTH, cardPanel10, 0, SpringLayout.NORTH, cardPanel9);
+		springLayout.putConstraint(SpringLayout.SOUTH, cardPanel10, 0, SpringLayout.SOUTH, cardPanel9);
+		springLayout.putConstraint(SpringLayout.WEST, cardPanel10, 10, SpringLayout.EAST, cardPanel9);
+		springLayout.putConstraint(SpringLayout.EAST, cardPanel10, cardWidth, SpringLayout.WEST, cardPanel10);
+		
 		updateHand();
 	}
 
 	public void updateHand() {
-		int limit = 4;
-		int count = 0;
-		Iterator<CardPanel> it = hand.iterator();
-		while (it.hasNext()) {
-			CardPanel cp = it.next();
-			if (count < limit) {
-				cp.setVisible(true);
-			} else {
-				cp.setVisible(false);
+		//TODO Dynamische SPielerID
+		int spielerID = 1;
+		GuiAdapterklasse ga = GuiAdapterklasse.getInstance();
+		ArrayList<Spieler> spielerList = ga.getSpieler();
+		Iterator<Spieler> iter = spielerList.iterator();
+		Spieler localPlayer = spielerList.get(0);
+		while(iter.hasNext()){
+			Spieler spieler = iter.next();
+			if (spieler.getId() == spielerID){
+				localPlayer = spieler;
 			}
-			count++;
 		}
+		
+		ArrayList<Integer> kartenArray = localPlayer.getHandkarten();
+		
+		Iterator<Integer> kartenIterator = kartenArray.iterator();
+		Iterator<CardPanel> PanelIterator = hand.iterator();
+		while(kartenIterator.hasNext()){
+			int card = kartenIterator.next();
+			CardPanel cp = PanelIterator.next();
+			cp.updatePanel(card);
+		}
+		while(PanelIterator.hasNext()){
+			CardPanel cp = PanelIterator.next();
+			cp.setVisible(false);
+			
+		}
+		
 	}
-
 }

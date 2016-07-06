@@ -127,5 +127,7 @@ public class Spieler {
 	public void setDublonen(int dublonen) {
 		this.dublonen = dublonen;
 	}
-	
+	public String toString(){
+		return getName();
+	}
 }

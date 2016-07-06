@@ -12,14 +12,15 @@ public class CanonButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 			JButton jb	= (JButton) e.getSource();
 			GamePanel gp = (GamePanel) jb.getParent().getParent();
+			CanonSelectFrame csf = new CanonSelectFrame();
 			try {
 				gp.textPaneAppendString("Button \"Kanone ausrichten\" gedrückt");
 			} catch (BadLocationException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			GuiAdapterklasse aC = GuiAdapterklasse.getInstance();
-			aC.handleCanonButtonListener();
+			
+			csf.start();
 
 	}
 
