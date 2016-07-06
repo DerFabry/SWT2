@@ -1,6 +1,8 @@
 package Kampf;
 
 import spieler.Spieler;
+import verwaltung.Verwaltung;
+
 import java.util.*;
 
 import Karten.SWT2.src.Karte;
@@ -22,6 +24,7 @@ public class Kampf {
 		this.anzahlSchiffeAngreifer = anzahlSchiffeAngreifer;
 		this.anzahlSchiffeVerteidiger = anzahlSchiffeVerteidiger;
 		this.schritt = schritt;
+		
 	}
 	
 	
@@ -46,6 +49,7 @@ public class Kampf {
 		int angriffswertGesammt = 0;
 		int länge = angreifer.length;
 		int werte[] = new int[länge];
+		Spieler neuerPiratenkönig = null;
 		
 		
 		
@@ -57,8 +61,18 @@ public class Kampf {
 		
 		for(int i = 0; i < länge; i++)
 			for(int j= 0; j < werte[i]; j++)
-			
-				angriffswertGesammt += getWurf();
+			{
+				int würfelWurf = getWurf();
+				int max = 0;
+				if(würfelWurf>max)
+				{
+					max = würfelWurf;
+					neuerPiratenkönig = angreifer[i];
+					
+				}
+				angriffswertGesammt += würfelWurf;
+			}
+				
 		
 		if(getVerteidigungswert() >= angriffswertGesammt)
 		{
@@ -69,13 +83,44 @@ public class Kampf {
 				verteidiger.setAngriffsBonus(0);
 				verteidiger.setVerteidigungsBonus(0);
 			}
-			
-			
-			return false;
+
+			return false;  //verteidiger siegt
 		}
 			
+		for(int i = 0; i < länge; i++)		//bonus zurücksetzten
+		{
+			angreifer[i].setAngriffsBonus(0);
+			angreifer[i].setVerteidigungsBonus(0);
+			verteidiger.setAngriffsBonus(0);
+			verteidiger.setVerteidigungsBonus(0);
+		}
+		
+		
+		List<Integer> kartenListe = new LinkedList<Integer>();
+		
+		kartenListe = verteidiger.getHandkarten();
+		
+		Collections.shuffle(kartenListe);
+		
+		for(int i = 0; i < angreifer.length; i++)
+			if(!kartenListe.isEmpty())
+			{
+				angreifer[i].setHandkarten(kartenListe.get(0));
+				kartenListe.remove(0);
+			}
+		
+		verteidiger.entferneHandkarten();
+		for(Integer karte : kartenListe)
+			verteidiger.setHandkarten(karte);
+		
+		
+		
+		
+		
+		neuerPiratenkönig.setPiratenkönig();
+		
 		//bonus zurücksetzten
-		return true;
+		return true;  //angreifer siegt
 	}
 	public int getWurf()
 	{

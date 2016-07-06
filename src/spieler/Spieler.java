@@ -128,4 +128,14 @@ public class Spieler {
 		this.dublonen = dublonen;
 	}
 	
+	public void entferneHandkarten()
+	{
+		handkarten = new ArrayList<Integer>();
+	}
+	
+	public void setPiratenkönig()
+	{
+		verwaltung.setPiratenkönig(this);
+	}
+
 }

@@ -137,6 +137,7 @@ public class Verwaltung {
 	}
 	
 	
+	
 	public Spieler[] getSpieler()
 	{
 		return spieler;
