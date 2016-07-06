@@ -17,6 +17,8 @@ public class Verwaltung {
 	
 	////////////////////
 	
+	public Verwaltung(){}
+	
 	public Verwaltung(int anzahlSpieler) throws Exception
 	{
 		aktuelleSpielphase = 1;
@@ -74,15 +76,7 @@ public class Verwaltung {
 			piratenkönig.setHandkarten(zieheKarte());
 		
 		aktuelleSpielphase = 2;
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	}
 	
 	////////////////////

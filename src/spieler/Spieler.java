@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import Karten.SWT2.src.Flaute;
 import Karten.SWT2.src.Karte;
+import verwaltung.Verwaltung;
 
 public class Spieler {
 
@@ -14,10 +15,15 @@ public class Spieler {
 	private int dublonen;
 	private int siegpunkte;
 	private int anzahlSchiffe;
+	private int angriffsBonus;
+	private Verwaltung verwaltung;
+	
+	private int verteidigungsBonus;
 	private ArrayList<Integer> handkarten; // integer repräsentieren die ids der HandKarten
 	
 	
 	public Spieler (int id, String name){
+		verwaltung = new Verwaltung();
 		this.id = id;
 		this.name = name;
 		kanonen = new int[4];
@@ -25,6 +31,8 @@ public class Spieler {
 		siegpunkte = 0;
 		anzahlSchiffe =0;
 		handkarten = new ArrayList<Integer>();
+		angriffsBonus = 0;
+		verteidigungsBonus = 0;
 		
 	};
 	
@@ -50,9 +58,39 @@ public class Spieler {
 	public Karte macheBeute(Spieler spieler){ return new Flaute();};
 	public void kaufeKanonen(){};
 	public void kaufeKarten(){};
-	public void kaufeSchiff(){};
+	public void kaufeSchiff(){/*bonus hochzählen*/};
 	public void macheVersprechungen(Spieler spieler, Karte karte){};
 	public void zieheKarten(){};
+	public int getAngreiferBonus()
+	{
+		return angriffsBonus;
+	}
+	
+	public void setAngriffsBonus(int bonus)
+	{
+		this.angriffsBonus = bonus;
+	}
+	
+	public int getVerteidigungsBonus()
+	{
+		return verteidigungsBonus;
+	}
+	
+	public void setVerteidigungsBonus(int bonus)
+	{
+		this.verteidigungsBonus = bonus;
+	}
+	
+	public int getAnzahlSchiffe()
+	{
+		return anzahlSchiffe;
+	}
+	
+	public int getPiratenkönigId()
+	{
+		return verwaltung.getPiratenkönig().getId();
+	}
+	
 	public int[] getKanonen(){
 		return kanonen;
 		}
@@ -64,6 +102,6 @@ public class Spieler {
 	public void setHandkarten(int kartenId) {
 	
 		this.handkarten.add(kartenId);
-	};
+	}
 	
 	}
