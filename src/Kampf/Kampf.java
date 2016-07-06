@@ -133,13 +133,13 @@ public class Kampf {
 		int anzahlWürfe = 0;
 		int anzahl = 0;
 		
-		int[] kanonen = angreifer.getKanonen();
+		List<Integer> kanonen = angreifer.getKanonen();
 		
-		for (int i = 0; 0 != kanonen[i]; i++)
+		for (int i = 0; 0 != kanonen.get(i); i++)
 			anzahl++;
 		
 		for(int i = 0; i < anzahl; i++)
-			if(verteidiger.getId() == kanonen[i])
+			if(verteidiger.getId() == kanonen.get(i))
 				anzahlWürfe++;
 		
 		return anzahlWürfe;
@@ -150,11 +150,11 @@ public class Kampf {
 		int anzahlWürfe = 0;
 		int anzahl = 0;
 		
-		int[] kanonen = verteidiger.getKanonen();
+		List<Integer> kanonen = verteidiger.getKanonen();
 		
-		for(int i = 0; i < kanonen.length; i++)
+		for(int i = 0; i < kanonen.size(); i++)
 		{
-			if(6 == kanonen[i])
+			if(6 == kanonen.get(i))
 				anzahlWürfe++;
 		}
 		
@@ -167,12 +167,12 @@ public class Kampf {
 	{
 		int verteidigungswert = 0;
 		int anzahl = 0;
-		int[] kanonen = verteidiger.getKanonen();
-		for(int i = 0; 0 != kanonen[i]; i++)
+		List<Integer> kanonen = verteidiger.getKanonen();
+		for(int i = 0; 0 != kanonen.get(i); i++)
 			anzahl++;
 		
 		for(int i = 0; i < anzahl; i++)
-			if(kanonen[i] == 6)
+			if(kanonen.get(i) == 6)
 				verteidigungswert++;
 		
 		if(verteidiger.getId() != verteidiger.getPiratenkönigId())

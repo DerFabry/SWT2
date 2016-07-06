@@ -11,7 +11,7 @@ public class Spieler {
 
 	private int id;
 	private String name;
-	private int kanonen[];
+	private ArrayList<Integer> kanonen;
 	private int dublonen;
 	private int siegpunkte;
 	private int anzahlSchiffe;
@@ -26,7 +26,9 @@ public class Spieler {
 		verwaltung = new Verwaltung();
 		this.id = id;
 		this.setName(name);
-		kanonen = new int[4];
+		kanonen = new ArrayList<Integer>();
+		kanonen.add(0);
+		
 		setDublonen(0);
 		setSiegpunkte(0);
 		anzahlSchiffe =0;
@@ -39,9 +41,9 @@ public class Spieler {
 	public void richteKanone(Spieler ziel){
 		int i =0;
 		boolean kanoneGesetzt=false;
-		while(i<kanonen.length&& !kanoneGesetzt){
-			if(kanonen[i]==0){
-				kanonen[i] = ziel.getId();
+		while(i<kanonen.size()&& !kanoneGesetzt){
+			if(kanonen.get(i)==0){
+				kanonen.set(i,ziel.getId());
 				kanoneGesetzt= true;
 			}
 			i++;
@@ -91,7 +93,7 @@ public class Spieler {
 		return verwaltung.getPiratenkönig().getId();
 	}
 	
-	public int[] getKanonen(){
+	public ArrayList<Integer> getKanonen(){
 		return kanonen;
 		}
 
