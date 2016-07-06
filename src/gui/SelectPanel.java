@@ -13,10 +13,18 @@ import javax.swing.SpringLayout;
 import spieler.Spieler;
 
 public class SelectPanel extends JPanel {
-	JLabel lblKanone_1, lblKanone_2, lblKanone_3, lblKanone_4;
-	JComboBox<Spieler> comboBox_1, comboBox_2, comboBox_3, comboBox_4;
-	ArrayList<JComboBox<Spieler>> comboBoxList;
-	JButton btnAuswahlBesttigen, btnAbbrechen;
+	private JLabel lblKanone_1, lblKanone_2, lblKanone_3, lblKanone_4;
+	private JComboBox<Spieler> comboBox_1, comboBox_2, comboBox_3, comboBox_4;
+	private ArrayList<JComboBox<Spieler>> comboBoxList;
+	private JButton btnAuswahlBesttigen;
+
+	public ArrayList<JComboBox<Spieler>> getComboBoxList() {
+		return comboBoxList;
+	}
+
+	public void setComboBoxList(ArrayList<JComboBox<Spieler>> comboBoxList) {
+		this.comboBoxList = comboBoxList;
+	}
 
 	public SelectPanel() {
 		lblKanone_1 = new JLabel("Kanone 1:");
@@ -37,7 +45,6 @@ public class SelectPanel extends JPanel {
 		comboBoxList.add(comboBox_4);
 
 		btnAuswahlBesttigen = new JButton("Auswahl best\u00E4tigen");
-		btnAbbrechen = new JButton("Abbrechen");
 		
 		fillComboBoxes();
 
@@ -60,8 +67,8 @@ public class SelectPanel extends JPanel {
 		add(comboBox_4);
 
 		add(btnAuswahlBesttigen);
-
-		add(btnAbbrechen);
+		
+		btnAuswahlBesttigen.addActionListener(new CanonTragetSelectButtonListener());
 
 		springLayout.putConstraint(SpringLayout.NORTH, lblKanone_1, 42, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, lblKanone_1, 43, SpringLayout.WEST, this);
@@ -95,14 +102,11 @@ public class SelectPanel extends JPanel {
 		springLayout.putConstraint(SpringLayout.WEST, comboBox_4, 0, SpringLayout.WEST, comboBox_3);
 		springLayout.putConstraint(SpringLayout.EAST, comboBox_4, 0, SpringLayout.EAST, comboBox_3);
 
-		springLayout.putConstraint(SpringLayout.NORTH, btnAbbrechen, 0, SpringLayout.NORTH, btnAuswahlBesttigen);
-		springLayout.putConstraint(SpringLayout.WEST, btnAbbrechen, 32, SpringLayout.EAST, btnAuswahlBesttigen);
-
 		springLayout.putConstraint(SpringLayout.WEST, btnAuswahlBesttigen, 53, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, btnAuswahlBesttigen, -39, SpringLayout.SOUTH, this);
 	}
 
-	private void fillComboBoxes() {
+	public void fillComboBoxes() {
 		GuiAdapterklasse ga = GuiAdapterklasse.getInstance();
 		ArrayList<Spieler> spielerList = ga.getSpieler();
 		
