@@ -9,9 +9,9 @@ import verwaltung.Verwaltung;
 
 public class Spieler {
 
-	private int id;
+	private int id;  //notwendige varable
 	private String name;
-	private int kanonen[];
+	private ArrayList<Integer> kanonen;
 	private int dublonen;
 	private int siegpunkte;
 	private int anzahlSchiffe;
@@ -22,11 +22,13 @@ public class Spieler {
 	private ArrayList<Integer> handkarten; // integer repräsentieren die ids der HandKarten
 	
 	
-	public Spieler (int id, String name){
+	public Spieler (int id, String name){  //konstr.
 		verwaltung = new Verwaltung();
 		this.id = id;
 		this.setName(name);
-		kanonen = new int[4];
+		kanonen = new ArrayList<Integer>();
+		kanonen.add(0);
+		
 		setDublonen(0);
 		setSiegpunkte(0);
 		anzahlSchiffe =0;
@@ -36,15 +38,15 @@ public class Spieler {
 		
 	}
 	
-	public void richteKanone(Spieler ziel){
+	public void richteKanone(Spieler ziel){   //setze die kanone auf einen spieler
 		int i =0;
 		boolean kanoneGesetzt=false;
-		while(i<kanonen.length&& !kanoneGesetzt){
-			if(kanonen[i]==0){
-				kanonen[i] = ziel.getId();
-				kanoneGesetzt= true;
+		while(i<kanonen.size()&& !kanoneGesetzt){  //falls keine kanonen verfügbar oder die kanone schon gesetzt wurde break
+			if(kanonen.get(i)==0){                  //wenn eine ungesetzte kanone gefunden
+				kanonen.set(i,ziel.getId());		//ziele
+				kanoneGesetzt= true;				//und sorge für break
 			}
-			i++;
+			i++;									//zähle i hoch um durch die liste zu gehen
 		}
 		
 	
@@ -53,7 +55,8 @@ public class Spieler {
 	public int getId(){return id;};
 	public void spieleKarteAus(int karte){ 
 		getHandkarten().remove(karte);
-	};
+	}
+	
 	public void spieleKarteAus(Karte karte, Spieler spieler){};
 	public Karte macheBeute(Spieler spieler){ return new Flaute();};
 	public void kaufeKanonen(){};
@@ -91,7 +94,7 @@ public class Spieler {
 		return verwaltung.getPiratenkönig().getId();
 	}
 	
-	public int[] getKanonen(){
+	public ArrayList<Integer> getKanonen(){
 		return kanonen;
 		}
 
@@ -130,4 +133,14 @@ public class Spieler {
 	public String toString(){
 		return getName();
 	}
+	public void entferneHandkarten()
+	{
+		handkarten = new ArrayList<Integer>();
+	}
+	
+	public void setPiratenkönig()
+	{
+		verwaltung.setPiratenkönig(this);
+	}
+
 }
