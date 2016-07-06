@@ -4,6 +4,12 @@ package Karten.SWT2.src;
 public class Bestechung extends Karte {
 
 	private int kampfschritt;
+	public Bestechung() {
+		super();
+		this.setId(10);
+		this.setName("Bestechung");
+		// TODO Auto-generated constructor stub
+	}
 	
 	public void setKampschritt(int kampfschritt)
 	{
@@ -15,6 +21,7 @@ public class Bestechung extends Karte {
 		return kampfschritt;
 	}
 	
+
 	public void kartenAktion() {
 		// TODO Auto-generated method stub
 		

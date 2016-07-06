@@ -6,6 +6,7 @@ public class Ausflugsboot extends Karte{
 	public Ausflugsboot() {
 		super();
 		this.setId(2);
+		this.setName("Ausflugsboot");
 		// TODO Auto-generated constructor stub
 	}
 
