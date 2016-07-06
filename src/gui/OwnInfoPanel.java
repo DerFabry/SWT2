@@ -5,6 +5,9 @@ import java.awt.Color;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.SpringLayout;
+
+import spieler.Spieler;
+
 import java.awt.Font;
 
 public class OwnInfoPanel extends JPanel {
@@ -71,6 +74,13 @@ public class OwnInfoPanel extends JPanel {
 		lblbounty.setFont(new Font("Tahoma", Font.PLAIN, minorFontSize));
 		sf_OwnInformationPanel.putConstraint(SpringLayout.NORTH, lblbounty, 2, SpringLayout.NORTH, lblKopfgeld);
 		sf_OwnInformationPanel.putConstraint(SpringLayout.WEST, lblbounty, 0, SpringLayout.WEST, lblShips);
+	}
+	
+	public void updatePlayerInfo(Spieler spieler){
+		lblName.setText(spieler.getName());
+		lblcanons.setText(Integer.toString(spieler.getKanonen().size()));
+		lblbounty.setText(Integer.toString(spieler.getSiegpunkte()));
+		lblShips.setText(Integer.toString(spieler.getAnzahlSchiffe()));
 	}
 
 }

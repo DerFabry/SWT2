@@ -35,9 +35,9 @@ public class BattlefieldPanel extends JPanel {
 		playerInfoPanelList.add(opponentInfo2);
 		playerInfoPanelList.add(opponentInfo3);
 		playerInfoPanelList.add(opponentInfo4);
-		
+
 		ga = GuiAdapterklasse.getInstance();
-		
+
 		updateOpponents(ga.getSpieler());
 		setupPanel();
 	}
@@ -80,19 +80,21 @@ public class BattlefieldPanel extends JPanel {
 	}
 
 	private void updateOpponents(ArrayList<Spieler> spielerList) {
+		// TODO Dynamische PlayerID
+
+		int localPlayerID = 1;
 		Iterator<PlayerInfoPanel> Paneliter = playerInfoPanelList.iterator();
 		Iterator<Spieler> spielerIterator = spielerList.iterator();
-		while (Paneliter.hasNext()) {
-			PlayerInfoPanel pip = Paneliter.next();
-			if(spielerIterator.hasNext()){
-				Spieler sp = spielerIterator.next();
-				pip.setPlayerinfo(sp);
-			} else{
-				pip.setVisible(false);
+		while (spielerIterator.hasNext()) {
+			Spieler sp = spielerIterator.next();
+			if (sp.getId() == localPlayerID) {
+				ownInfo.updatePlayerInfo(sp);
+			} else {
+				Paneliter.next().setPlayerinfo(sp);
 			}
-
-
+		}
+		while (Paneliter.hasNext()) {
+			Paneliter.next().setVisible(false);
 		}
 	}
-
 }

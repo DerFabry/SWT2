@@ -39,5 +39,8 @@ public abstract class Karte {
 	
 	public abstract void kartenAktion();
 	
+	public String toString(){
+		return name;
+	}
 
 }
