@@ -74,7 +74,7 @@ public class PlayerInfoPanel extends JPanel {
 	
 	public void setPlayerinfo(Spieler spieler){
 		lblname.setText(spieler.getName());
-		lblcanons.setText(Integer.toString(spieler.getKanonen().length));
+		lblcanons.setText(Integer.toString(spieler.getKanonen().size()));
 		lblbounty.setText(Integer.toString(spieler.getSiegpunkte()));
 		lblcards.setText(Integer.toString(spieler.getHandkarten().size()));
 		lblships.setText(Integer.toString(spieler.getAnzahlSchiffe()));
