@@ -69,6 +69,7 @@ public class Verwaltung {
 
 
 				spieler[i-1].setHandkarten(zieheKarte());
+				spieler[i-1].setHandkarten(zieheKarte());
 				
 			}
 			
