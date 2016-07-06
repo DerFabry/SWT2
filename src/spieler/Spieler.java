@@ -9,7 +9,7 @@ import verwaltung.Verwaltung;
 
 public class Spieler {
 
-	private int id;
+	private int id;  //notwendige varable
 	private String name;
 	private ArrayList<Integer> kanonen;
 	private int dublonen;
@@ -22,7 +22,7 @@ public class Spieler {
 	private ArrayList<Integer> handkarten; // integer repräsentieren die ids der HandKarten
 	
 	
-	public Spieler (int id, String name){
+	public Spieler (int id, String name){  //konstr.
 		verwaltung = new Verwaltung();
 		this.id = id;
 		this.setName(name);
@@ -38,15 +38,15 @@ public class Spieler {
 		
 	}
 	
-	public void richteKanone(Spieler ziel){
+	public void richteKanone(Spieler ziel){   //setze die kanone auf einen spieler
 		int i =0;
 		boolean kanoneGesetzt=false;
-		while(i<kanonen.size()&& !kanoneGesetzt){
-			if(kanonen.get(i)==0){
-				kanonen.set(i,ziel.getId());
-				kanoneGesetzt= true;
+		while(i<kanonen.size()&& !kanoneGesetzt){  //falls keine kanonen verfügbar oder die kanone schon gesetzt wurde break
+			if(kanonen.get(i)==0){                  //wenn eine ungesetzte kanone gefunden
+				kanonen.set(i,ziel.getId());		//ziele
+				kanoneGesetzt= true;				//und sorge für break
 			}
-			i++;
+			i++;									//zähle i hoch um durch die liste zu gehen
 		}
 		
 	
@@ -55,7 +55,8 @@ public class Spieler {
 	public int getId(){return id;};
 	public void spieleKarteAus(int karte){ 
 		getHandkarten().remove(karte);
-	};
+	}
+	
 	public void spieleKarteAus(Karte karte, Spieler spieler){};
 	public Karte macheBeute(Spieler spieler){ return new Flaute();};
 	public void kaufeKanonen(){};
@@ -94,9 +95,7 @@ public class Spieler {
 	}
 	
 	public ArrayList<Integer> getKanonen(){
-		System.out.println("test");
-		return kanonen;//test
-		
+		return kanonen;
 		}
 
 	public ArrayList<Integer> getHandkarten() {
