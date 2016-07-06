@@ -5,13 +5,14 @@ import java.util.*;
 
 public class Kampf {
 	
-	private Spieler angreifer;
+	private Spieler angreifer[];
 	private Spieler verteidiger;
 	private int anzahlSchiffeAngreifer;
 	private int anzahlSchiffeVerteidiger;
 	private int schritt;
 	
-	public Kampf(Spieler angreifer, Spieler verteidiger, int anzahlSchiffeAngreifer, int anzahlSchiffeVerteidiger, int schritt)
+	
+	public Kampf(Spieler angreifer[], Spieler verteidiger, int anzahlSchiffeAngreifer, int anzahlSchiffeVerteidiger, int schritt)
 	{
 		this.angreifer = angreifer;
 		this.verteidiger = verteidiger;
@@ -36,18 +37,38 @@ public class Kampf {
 		return result;
 	}
 	
-	public Spieler ermittleSieger()
+	public boolean angriffErfolgreich()
 	{
-		if(getVerteidigungswert() >= getAngriffswert())
-			return verteidiger;
+		int angriffswertGesammt = 0;
+		int länge = angreifer.length;
+		int werte[] = new int[länge];
+		for(int i = 0; i < länge; i++)
+		{
+			werte[i] = getAnzahlWürfe(angreifer[i]);
+		}
 		
-		return angreifer;
+		for(int i = 0; i < länge; i++)
+			for(int j= 0; j < werte[i]; j++)
+				angriffswertGesammt += getWurf();
+		
+		
+		
+		if(getVerteidigungswert() >= angriffswertGesammt)
+			return false;
+
+		return true;
+	}
+	public int getWurf()
+	{
+		Random rand = new Random();
+		return rand.nextInt(6)+1;
 	}
 	
-	public int getAngriffswert()
+	public int getAnzahlWürfe(Spieler angreifer)
 	{
-		int angriffswert = 0;
+		int anzahlWürfe = 0;
 		int anzahl = 0;
+		
 		int[] kanonen = angreifer.getKanonen();
 		
 		for (int i = 0; 0 != kanonen[i]; i++)
@@ -55,9 +76,9 @@ public class Kampf {
 		
 		for(int i = 0; i < anzahl; i++)
 			if(verteidiger.getId() == kanonen[i])
-				angriffswert++;
+				anzahlWürfe++;
 		
-		return angriffswert;
+		return anzahlWürfe;
 	}
 	
 	public int getVerteidigungswert()
