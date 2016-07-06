@@ -1,5 +1,8 @@
 package gui;
 
+import spieler.Spieler;
+import verwaltung.Verwaltung;
+
 public class GuiAdapterklasse {
 	private static final GuiAdapterklasse OBJ = new GuiAdapterklasse();
 
@@ -33,5 +36,12 @@ public class GuiAdapterklasse {
 
 	public void handlePlayCardButtonListener() {
 		System.out.println("handleBuyCardButtonListener");
+	}
+	
+	public Spieler[] getSpieler(){
+		Verwaltung verwaltung = Verwaltung.getInstance();
+		Spieler[] spielerArray = verwaltung.getSpieler();
+		return spielerArray;
+		
 	}
 }

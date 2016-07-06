@@ -1,15 +1,22 @@
 package gui;
 
-import javax.swing.JPanel;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
+import spieler.Spieler;
+
 public class BattlefieldPanel extends JPanel {
-	SpringLayout sl_this;
+	private SpringLayout sl_this;
 	private PlayerInfoPanel opponentInfo1, opponentInfo2, opponentInfo3, opponentInfo4;
 	private OwnInfoPanel ownInfo;
 	private int opponentInfoPanelWidth, opponentInfoPanelHeight;
-	
+	private ArrayList<PlayerInfoPanel> playerInfoPanelList;
+	GuiAdapterklasse ga;
+
 	public BattlefieldPanel() {
 		sl_this = new SpringLayout();
 		opponentInfo1 = new PlayerInfoPanel();
@@ -18,23 +25,34 @@ public class BattlefieldPanel extends JPanel {
 		opponentInfo4 = new PlayerInfoPanel();
 
 		ownInfo = new OwnInfoPanel();
-		
+
 		opponentInfoPanelWidth = 200;
 		opponentInfoPanelHeight = 150;
+
+		playerInfoPanelList = new ArrayList<PlayerInfoPanel>();
+
+		playerInfoPanelList.add(opponentInfo1);
+		playerInfoPanelList.add(opponentInfo2);
+		playerInfoPanelList.add(opponentInfo3);
+		playerInfoPanelList.add(opponentInfo4);
+		
+		ga = GuiAdapterklasse.getInstance();
+		
+		updateOpponents(ga.getSpieler());
 		setupPanel();
 	}
 
 	private void setupPanel() {
 		setBackground(new Color(135, 206, 250));
 		setLayout(sl_this);
-		
+
 		this.add(opponentInfo1);
 		this.add(opponentInfo2);
 		this.add(opponentInfo3);
 		this.add(opponentInfo4);
 
 		this.add(ownInfo);
-		
+
 		sl_this.putConstraint(SpringLayout.WEST, ownInfo, 100, SpringLayout.EAST, opponentInfo1);
 		sl_this.putConstraint(SpringLayout.NORTH, ownInfo, 200, SpringLayout.NORTH, this);
 		sl_this.putConstraint(SpringLayout.SOUTH, ownInfo, 0, SpringLayout.SOUTH, this);
@@ -59,6 +77,19 @@ public class BattlefieldPanel extends JPanel {
 		sl_this.putConstraint(SpringLayout.SOUTH, opponentInfo4, 0, SpringLayout.SOUTH, opponentInfo3);
 		sl_this.putConstraint(SpringLayout.EAST, opponentInfo4, 0, SpringLayout.EAST, opponentInfo1);
 		sl_this.putConstraint(SpringLayout.WEST, opponentInfo4, 0, SpringLayout.WEST, this);
+	}
+
+	private void updateOpponents(Spieler[] spielerArray) {
+		Iterator<PlayerInfoPanel> Paneliter = playerInfoPanelList.iterator();
+		int spielerCount = 0;
+		while (Paneliter.hasNext()) {
+			PlayerInfoPanel pip = Paneliter.next();
+			if (spielerCount < spielerArray.length) {
+				pip.setPlayerinfo(spielerArray[spielerCount]);
+			}
+			spielerCount++;
+
+		}
 	}
 
 }

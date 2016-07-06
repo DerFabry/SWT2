@@ -15,13 +15,13 @@ public class SonstigesCreator extends Spielablauf
 		
 		
 		if(id == 4)
-			new Flaute().kartenAktion();
+			return new Flaute();
 		
 		else if (id == 5)
-			new Waffenschmied().kartenAktion();
+			return new Waffenschmied();
 		
 		else if (id == 6)
-			new Spion().kartenAktion();
+			return new Spion();
 		
 		return null;
 		

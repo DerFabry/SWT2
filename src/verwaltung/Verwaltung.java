@@ -9,6 +9,7 @@ import Karten.SWT2.src.LuxusCreator;
 import Karten.SWT2.src.SonstigesCreator;
 
 public class Verwaltung {
+	private static final Verwaltung VERWALTUNG = new Verwaltung(5);
 	private Spieler piratenkönig;
 	private int anzahlSpieler;
 	private int aktuelleSpielphase;
@@ -19,72 +20,81 @@ public class Verwaltung {
 	
 	public Verwaltung(){}
 	
-	public Verwaltung(int anzahlSpieler) throws Exception
+	private Verwaltung(int anzahlSpieler)
 	{
-		aktuelleSpielphase = 1;
-		
-		kartenstapel = new LinkedList<Karte>();
-		
-		
-		
-		LuxusCreator luxus = new LuxusCreator();
-		
-		
-		for(int i = 0; i < 3; i++)
-			kartenstapel.add(luxus.SpieleKarteAus(i));
-		
-		GeldCreator geld = new GeldCreator();
-		for(int i = 0; i < 26; i++)
-			kartenstapel.add(geld.SpieleKarteAus(3));
-		
-		KampfCreator kampf = new KampfCreator();
-		
-		for(int i = 7; i < 14; i++)
-		{
-			kartenstapel.add(kampf.SpieleKarteAus(i));
-			kartenstapel.add(kampf.SpieleKarteAus(i));
-		}
-		
-		
-		SonstigesCreator sonst = new SonstigesCreator();
-		
-		for(int i = 4; i < 6; i++)
-			kartenstapel.add(sonst.SpieleKarteAus(i));
-		
-		
-		Collections.shuffle(kartenstapel);
-		
-		
-		
-		
-		Random rand = new Random();
-		spieler = new Spieler[anzahlSpieler];
-		
-		for(int i = 1; i < anzahlSpieler+1; i++)
-		{
-			spieler[i] = new Spieler(i, "Spieler "+i);
+		try {
+			aktuelleSpielphase = 1;
 			
-
-
-			spieler[i].setHandkarten(zieheKarte());
+			kartenstapel = new LinkedList<Karte>();
 			
-		}
-		
-		this.setPiratenkönig(spieler[rand.nextInt(anzahlSpieler)+1]);
-		
-		for(int i = 0; i < anzahlSpieler; i++)
-			piratenkönig.setHandkarten(zieheKarte());
-		
-		aktuelleSpielphase = 2;
+			
+			
+			LuxusCreator luxus = new LuxusCreator();
+			
+			
+			for(int i = 0; i < 3; i++)
+				kartenstapel.add(luxus.SpieleKarteAus(i));
+			
+			GeldCreator geld = new GeldCreator();
+			for(int i = 0; i < 26; i++)
+				kartenstapel.add(geld.SpieleKarteAus(3));
+			
+			KampfCreator kampf = new KampfCreator();
+			
+			for(int i = 7; i < 14; i++)
+			{
+				kartenstapel.add(kampf.SpieleKarteAus(i));
+				kartenstapel.add(kampf.SpieleKarteAus(i));
+			}
+			
+			
+			SonstigesCreator sonst = new SonstigesCreator();
+			
+			for(int i = 4; i < 6; i++)
+				kartenstapel.add(sonst.SpieleKarteAus(i));
+			
+			
+			Collections.shuffle(kartenstapel);
+			
+			
+			
+			
+			Random rand = new Random();
+			spieler = new Spieler[anzahlSpieler];
+			
+			for(int i = 1; i < anzahlSpieler+1; i++)
+			{
+				spieler[i-1] = new Spieler(i, "Spieler "+i);
+				
 
+
+				spieler[i-1].setHandkarten(zieheKarte());
+				
+			}
+			
+			this.setPiratenkönig(spieler[rand.nextInt(anzahlSpieler)+1]);
+			
+			for(int i = 0; i < anzahlSpieler; i++)
+				piratenkönig.setHandkarten(zieheKarte());
+			
+			aktuelleSpielphase = 2;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static Verwaltung getInstance(){
+		return VERWALTUNG;
 	}
 	
 	////////////////////
 	
 	public int zieheKarte()
 	{
-		Karte karte = kartenstapel.get(0);
-		kartenstapel.remove(0);
+		Karte karte = kartenstapel.getFirst();
+		kartenstapel.removeFirst();
 		return karte.getId();
 	}
 	

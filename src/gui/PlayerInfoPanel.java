@@ -3,6 +3,9 @@ package gui;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.SpringLayout;
+
+import spieler.Spieler;
+
 import javax.swing.JLabel;
 
 public class PlayerInfoPanel extends JPanel {
@@ -67,5 +70,13 @@ public class PlayerInfoPanel extends JPanel {
 		
 		springLayout.putConstraint(SpringLayout.NORTH, lblbounty, 0, SpringLayout.NORTH, lblKopfgeld);
 		springLayout.putConstraint(SpringLayout.WEST, lblbounty, 0, SpringLayout.WEST, lblname);
+	}
+	
+	public void setPlayerinfo(Spieler spieler){
+		lblname.setText(spieler.getName());
+		lblcanons.setText(Integer.toString(spieler.getKanonen().length));
+		lblbounty.setText(Integer.toString(spieler.getSiegpunkte()));
+		lblcards.setText(Integer.toString(spieler.getHandkarten().size()));
+		lblships.setText(Integer.toString(spieler.getAnzahlSchiffe()));
 	}
 }

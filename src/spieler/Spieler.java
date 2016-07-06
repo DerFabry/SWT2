@@ -25,10 +25,10 @@ public class Spieler {
 	public Spieler (int id, String name){
 		verwaltung = new Verwaltung();
 		this.id = id;
-		this.name = name;
+		this.setName(name);
 		kanonen = new int[4];
-		dublonen= 0;
-		siegpunkte = 0;
+		setDublonen(0);
+		setSiegpunkte(0);
 		anzahlSchiffe =0;
 		handkarten = new ArrayList<Integer>();
 		angriffsBonus = 0;
@@ -102,6 +102,30 @@ public class Spieler {
 	public void setHandkarten(int kartenId) {
 	
 		this.handkarten.add(kartenId);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getSiegpunkte() {
+		return siegpunkte;
+	}
+
+	public void setSiegpunkte(int siegpunkte) {
+		this.siegpunkte = siegpunkte;
+	}
+
+	public int getDublonen() {
+		return dublonen;
+	}
+
+	public void setDublonen(int dublonen) {
+		this.dublonen = dublonen;
 	}
 	
 }

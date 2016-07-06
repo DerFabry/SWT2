@@ -14,25 +14,25 @@ public class KampfCreator extends Spielablauf{
 			
 		
 		if(id == 7)
-			new Überraschungsangriff().kartenAktion();
+			return new Überraschungsangriff();
 			
 		else if(id == 8)
-			new Meuterei().kartenAktion();
+			return new Meuterei();
 			
 		else if(id == 9)
-			new Kanonenboot().kartenAktion();
+			return new Kanonenboot();
 		
 		else if(id == 10)		
-			new Bestechung().kartenAktion();
+			return new Bestechung();
 		
 		else if(id == 11)	
-			new NassesPulver().kartenAktion();
+			return new NassesPulver();
 			
 		else if(id == 12)
-			new Kapern().kartenAktion();
+			return new Kapern();
 			
 		else if(id == 13)		
-			new SchlechterWind().kartenAktion();
+			return new SchlechterWind();
 		
 		return null;
 	
