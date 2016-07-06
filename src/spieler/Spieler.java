@@ -142,34 +142,5 @@ public class Spieler {
 		verwaltung.setPiratenkönig(this);
 	}
 	
-	public Karte lieferHandkarte(int id)
-	{
-		switch(id)
-		{
-			case 0: {return new SprechenderPapagei();}
-			case 1: {return new Schatzkarte();}
-			case 2: {return new Ausflugsboot();}
-			case 3: {return new Beute();}
-			case 4: {return new Flaute();}
-			case 6: {return new Waffenschmied();}
-			case 7: {return new Spion();}
-			case 8: {return new Überraschungsangriff();}
-			case 9: {return new Meuterei();}
-			case 10: {return new Kanonenboot();}
-			case 11: {return new Bestechung();}
-			case 12: {return new NassesPulver();}
-			case 13: {return new Kapern();}
-			case 14: {return new SchlechterWind();}
-
-			default: System.out.println("wrong id");
-		
-		
-		
-		}
-		return null;
-	}
-	
-	
-	
 
 }
