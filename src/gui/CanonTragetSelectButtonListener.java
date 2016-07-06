@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 
 import spieler.Spieler;
@@ -14,7 +15,8 @@ public class CanonTragetSelectButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		int localPlayerID = 1;
-		SelectPanel spPanel = (SelectPanel) e.getSource();
+		JButton button = (JButton) e.getSource();
+		SelectPanel spPanel = (SelectPanel) button.getParent();
 		ArrayList<JComboBox<Spieler>> cbList = spPanel.getComboBoxList();
 		Iterator<JComboBox<Spieler>> iter = cbList.iterator();
 		GuiAdapterklasse ac = GuiAdapterklasse.getInstance();
