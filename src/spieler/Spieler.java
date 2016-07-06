@@ -94,7 +94,9 @@ public class Spieler {
 	}
 	
 	public ArrayList<Integer> getKanonen(){
-		return kanonen;
+		System.out.println("test");
+		return kanonen;//test
+		
 		}
 
 	public ArrayList<Integer> getHandkarten() {
