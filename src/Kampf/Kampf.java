@@ -131,7 +131,7 @@ public class Kampf {
 				verteidigungswert++;
 		
 		if(verteidiger.getId() != verteidiger.getPiratenkönigId())
-			verteidigungswert += wuerfle(1);
+			verteidigungswert += wuerfle(getAnzahlWürfeVerteidiger(verteidiger));
 		
 		
 		

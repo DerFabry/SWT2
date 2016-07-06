@@ -12,7 +12,7 @@ public class Verwaltung {
 	private Spieler piratenkönig;
 	private int anzahlSpieler;
 	private int aktuelleSpielphase;
-	private Spieler spieler[];
+	private Spieler[] spieler;
 	private LinkedList<Karte> kartenstapel;
 	
 	////////////////////
@@ -124,5 +124,11 @@ public class Verwaltung {
 	
 	public void initKartenStapel(){
 		
+	}
+	
+	
+	public Spieler[] getSpieler()
+	{
+		return spieler;
 	}
 }

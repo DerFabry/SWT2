@@ -34,9 +34,9 @@ public class Spieler {
 		angriffsBonus = 0;
 		verteidigungsBonus = 0;
 		
-	};
+	}
 	
-	private void richteKanone(Spieler ziel){
+	public void richteKanone(Spieler ziel){
 		int i =0;
 		boolean kanoneGesetzt=false;
 		while(i<kanonen.length&& !kanoneGesetzt){
@@ -48,7 +48,7 @@ public class Spieler {
 		}
 		
 	
-	};
+	}
 	
 	public int getId(){return id;};
 	public void spieleKarteAus(int karte){ 
@@ -104,4 +104,4 @@ public class Spieler {
 		this.handkarten.add(kartenId);
 	}
 	
-	}
+}
