@@ -1,31 +1,25 @@
 package Kampf;
 
 import spieler.Spieler;
-import verwaltung.Verwaltung;
 
 import java.util.*;
 
-import Karten.SWT2.src.Karte;
 
 public class Kampf {
 	
 	private Spieler angreifer[];
 	private Spieler verteidiger;
-	private int anzahlSchiffeAngreifer;
-	private int anzahlSchiffeVerteidiger;
-	private int schritt;
+
 	
 	
 	///////////////////////////
 	
-	public Kampf(Spieler angreifer[], Spieler verteidiger, int anzahlSchiffeAngreifer, int anzahlSchiffeVerteidiger, int schritt)
+	public Kampf(Spieler angreifer[], Spieler verteidiger)
 	{
 		
 		this.angreifer = angreifer;
 		this.verteidiger = verteidiger;
-		this.anzahlSchiffeAngreifer = anzahlSchiffeAngreifer;
-		this.anzahlSchiffeVerteidiger = anzahlSchiffeVerteidiger;
-		this.schritt = schritt;
+		
 		
 	}
 	
@@ -144,8 +138,6 @@ public class Kampf {
 	public int getAnzahlWürfeVerteidiger(Spieler verteidiger)
 	{
 		int anzahlWürfe = 0;
-		int anzahl = 0;
-		
 		List<Integer> kanonen = verteidiger.getKanonen();
 		
 		for(int i = 0; i < kanonen.size(); i++) //je kanone, in der 

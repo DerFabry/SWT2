@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
+import com.sun.xml.internal.bind.v2.model.core.Adapter;
+
 import spieler.Spieler;
 
 public class HandPanel extends JPanel {
@@ -173,10 +175,10 @@ public class HandPanel extends JPanel {
 		}
 		
 		ArrayList<Integer> kartenArray = localPlayer.getHandkarten();
-		
 		Iterator<Integer> kartenIterator = kartenArray.iterator();
 		Iterator<CardPanel> PanelIterator = hand.iterator();
 		while(kartenIterator.hasNext()){
+			
 			int card = kartenIterator.next();
 			CardPanel cp = PanelIterator.next();
 			cp.updatePanel(card);

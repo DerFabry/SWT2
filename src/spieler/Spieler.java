@@ -1,7 +1,6 @@
 package spieler;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
 import Karten.SWT2.src.*;
 import verwaltung.Verwaltung;
@@ -56,13 +55,13 @@ public class Spieler {
 		getHandkarten().remove(karte);
 	}
 	
-	public void spieleKarteAus(Karte karte, Spieler spieler){};
-	public Karte macheBeute(Spieler spieler){ return new Flaute();};
-	public void kaufeKanonen(){};
-	public void kaufeKarten(){};
-	public void kaufeSchiff(){/*bonus hochzählen*/};
-	public void macheVersprechungen(Spieler spieler, Karte karte){};
-	public void zieheKarten(){};
+	public void spieleKarteAus(Karte karte, Spieler spieler){}
+	public Karte macheBeute(Spieler spieler){ return new Flaute();}
+	public void kaufeKanonen(){}
+	public void kaufeKarten(){}
+	public void kaufeSchiff(){/*bonus hochzählen*/}
+	public void macheVersprechungen(Spieler spieler, Karte karte){}
+	public void zieheKarten(){}
 	public int getAngreiferBonus()
 	{
 		return angriffsBonus;
